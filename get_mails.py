@@ -1,16 +1,7 @@
-
-"""Performs client tasks for testing IMAP OAuth2 authentication.
-To use this script, you'll need to have registered with Google as an OAuth
-application and obtained an OAuth client ID and client secret.
-See https://developers.google.com/identity/protocols/OAuth2 for instructions on
-registering and for documentation of the APIs invoked by this code.
-This script has 3 modes of operation.
-"""
-
 import yaml, poplib
 
 
-config_path = "config.yml"
+config_path = "/etc/tgbot-actions/config.yml"
 
 
 def get_meta(cmd):
@@ -23,9 +14,6 @@ def mail_manager():
 	pop_conn = poplib.POP3_SSL('pop.gmail.com')
 	pop_conn.user(get_meta('login'))
 	pop_conn.pass_(get_meta('passwd'))
-	
-	# print("Done auth!")
-	
 	messages = [pop_conn.retr(i) for i in range(1, len(pop_conn.list()[1]) + 1)]
 	response = []
 	
@@ -41,7 +29,6 @@ def mail_manager():
 	
 	if len(response) == 0:
 		return None, 'Sorry, no updates :('
-	
 	return response, None
 
 

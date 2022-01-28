@@ -1,0 +1,12 @@
+[Unit]
+Description=Mail Checker
+After=multi-user.target
+Conflicts=getty@tty1.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /usr/bin/tgbot-actions/main.py
+StandardInput=tty-force
+
+[Install]
+WantedBy=multi-user.target

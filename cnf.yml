@@ -1,0 +1,9 @@
+token: token
+link: t.me/cicd_alert_manager_bot
+help: https://core.telegram.org/bots/api
+
+email: email@example.by
+login: login
+passwd: password
+
+user: 123456789
